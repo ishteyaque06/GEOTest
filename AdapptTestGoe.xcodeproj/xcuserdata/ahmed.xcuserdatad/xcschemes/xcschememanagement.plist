@@ -7,7 +7,25 @@
 		<key>AdapptTestGoe.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>E2359F091FE17D44005B80F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2359F1D1FE17D46005B80F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2359F281FE17D47005B80F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
