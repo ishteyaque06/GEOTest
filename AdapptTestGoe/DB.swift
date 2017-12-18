@@ -15,9 +15,12 @@ let path = NSSearchPathForDirectoriesInDomains(
 extension Notification.Name{
      public static let LocationUpdated: NSNotification.Name = NSNotification.Name(rawValue: "LocationUpdated")
 }
-
+protocol DatabaseUpdateDelegate{
+    func databaseUpdate()
+}
 class DB:NSObject{
     var db : Connection? = nil
+    var delegate:DatabaseUpdateDelegate!
     static let sharedInstance=DB()
     let location = Table("Location")
     let lat = Expression<Double>("Latitude")
@@ -48,7 +51,10 @@ class DB:NSObject{
     func insertLocationCoordination(latitude:Double,longitute:Double){
         do {
             try getInstance().db?.run(location.insert(lat <- latitude, lngt <- longitute))
-            NotificationCenter.default.post(name: NSNotification.Name.LocationUpdated, object: nil)
+            if let _del=self.delegate{
+                _del.databaseUpdate()
+            }
+           // NotificationCenter.default.post(name: NSNotification.Name.LocationUpdated, object: nil)
             
         } catch  {
             print(error.localizedDescription)
